@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>user</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/style/styles.css" />
+  </head>
+  <body>
+    <h1>User Page</h1>
+    <button
+      class="btn btn-danger float-right"
+      style="margin: 10px;"
+      id="logout"
+    >
+      <b style="font-size: 1.5em;">LogOut</b>
+    </button>
+    <div class="container" style="margin: auto">
+      <div class="input-group" style="width: 100%">
+        <input
+          type="text"
+          id="myInput"
+          placeholder="Search for names.."
+          style="width: 60%"
+        />
+        <button
+          id="btn"
+          class="btn btn-primary"
+          style="height: 40px; margin: 5px 10px;"
+        >
+          Search
+        </button>
+      </div>
+      <table id="tbl"></table>
+      <div>Time left = <span id="timer"></span></div>
+      <div id="cancelbutn"></div>
+    </div>
+
+    <div
+      id="map"
+      style="width: 90%;
+          height: 400px;
+          margin: auto;
+          background-color: grey;"
+    ></div>
+    <div style="height: 20px"></div>
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-storage.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl6Gw9PTfUdpsy9Pg4WMVLERhY9o5XVOQ&callback=initMap"
+      type="text/javascript"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="../src/firebase.js"></script>
+    <script src="../src/user.js"></script>
+  </body>
+</html>
