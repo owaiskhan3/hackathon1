@@ -224,7 +224,7 @@ async function signout(e) {
     await logOut();
     Swal.fire("Successfully LoggedOut!", "", "success");
     setTimeout(() => {
-      location.assign("index.html");
+      location.assign("../index.html");
     }, 2000);
   } catch (e) {
     Swal.fire("Error", error.message, "error");
