@@ -31,26 +31,24 @@ async function search() {
         console.log(inp.value);
         if (inp.value == i.data().companyName) {
           cont.innerHTML += `
-          <thead>
-            <th>Company Name</th>
-            <th>Created At</th>
-            <th>Since</th>
-            <th></th>
-            </thead>
-            <tbody>
-            <tr>
-            <td>${i.data().companyName} </td>
-            <td>${new Date(i.data().createdAt)} </td>
-            <td>${i.data().since} </td>
-  
-                   
-            <td><button id=${
-              i.data().createdAt
-            } class="btn btn-warning" onclick="getToken('${
+            <thead>
+              <th>Company Name</th>
+              <th>Created At</th>
+              <th>Since</th>
+              <th></th>
+              </thead>
+              <tbody>
+              <tr>
+              <td>${i.data().companyName} </td>
+              <td>${new Date(i.data().createdAt)} </td>
+              <td>${i.data().since} </td>                     
+              <td><button id=${
+                i.data().createdAt
+              } class="btn btn-warning" onclick="getToken('${
             i.id
           }')">Get Token</button></td>
-            </tr>
-            </tbody>`;
+              </tr>
+              </tbody>`;
           initMap(i.data().lat, i.data().lng);
         }
       });
@@ -59,12 +57,7 @@ async function search() {
     cont.innerHTML += err;
   }
 }
-{
-  // <th>Total Tokens</th>
-  // <th>Current Tokens</th>
-  /* <td>${i.data().totalTokens} </td>
-<td>${i.data().CurrentTokens} </td> */
-}
+
 async function initMap(lat, lng) {
   console.log(lat, lng);
   locLat = lat;
