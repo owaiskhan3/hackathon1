@@ -100,13 +100,22 @@ async function getToken(id) {
     });
   console.log(uid);
 
+  var tokenTime = await db
+    .collection("customerTokens")
+    .doc(uuid)
+    .get();
+  var ids = await tokenTime.data();
+  console.log(ids.estimatedTime);
+  var totalTokens = ids.tokenLimits - 1;
+  document.getElementById("timer").innerHTML = ids.estimatedTime + ":" + 00;
+
   db.collection("customerTokens")
     .doc(id)
     .set(
       {
         createdAt: time,
         // estimatedTime: 1,
-        // tokenLimits: 100,
+        tokenLimits: totalTokens,
         userInfo: firebase.firestore.FieldValue.arrayUnion({
           [uid]: {
             isDone: false
@@ -120,14 +129,7 @@ async function getToken(id) {
     .then(() => {
       Swal.fire("Token Generated", "", "success");
     });
-  var time = await db
-    .collection("customerTokens")
-    .doc(uuid)
-    .get();
-  var ids = await time.data();
-  console.log(ids.estimatedTime);
 
-  document.getElementById("timer").innerHTML = 00 + ":" + 59;
   var divCancel = document.getElementById("cancelbutn");
   divCancel.innerHTML = "";
 
@@ -174,7 +176,7 @@ async function startTimer() {
       "success"
     );
     // setTimeout(stop(), 500);
-    document.getElementById("timer").innerHTML = "00" + ":" + "00";
+    document.getElementById("timer").innerHTML = m + ":" + s;
 
     var idd = await db
       .collection("uid")
@@ -209,10 +211,11 @@ async function startTimer() {
   function checkSecond(sec) {
     if (sec < 10 && sec >= 0) {
       sec = "0" + sec;
-    } // add zero in front of numbers < 10
-    // if (sec < 0) {
-    //   sec = "59";
-    // }
+    }
+    // add zero in front of numbers < 10
+    if (sec < 0) {
+      sec = "59";
+    }
     return sec;
   }
 }
