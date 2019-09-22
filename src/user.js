@@ -168,6 +168,7 @@ async function startTimer() {
       "Please proceed to respective Counter",
       "success"
     );
+    Push.create("Your Turn Has Arrived..!");
     // setTimeout(stop(), 500);
     document.getElementById("timer").innerHTML = m + ":" + s;
 
